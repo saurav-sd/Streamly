@@ -1,0 +1,7 @@
+com\utoob\videostreaming\VideoStreamingApplication$WebConfig.class
+com\utoob\videostreaming\Config\AwsConfig.class
+com\utoob\videostreaming\Domain\Video.class
+com\utoob\videostreaming\Service\VideoService.class
+com\utoob\videostreaming\Repository\VideoRepo.class
+com\utoob\videostreaming\VideoStreamingApplication.class
+com\utoob\videostreaming\Controllers\Controller.class

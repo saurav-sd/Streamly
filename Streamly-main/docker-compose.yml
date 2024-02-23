@@ -1,0 +1,39 @@
+version: '3'
+services:
+  frontend:
+    build:
+      context: ./front-end/utoob  # Path to the frontend application folder
+    ports:
+      - "3000:3000"  # Map container port 3000 to host port 3000
+    networks:
+      - app_network
+    depends_on:
+      - backend
+ 
+  backend:
+    build:
+      context: ./video-streaming  # Path to the backend application folder
+    ports:
+      - "8000:8000"  # Map container port 8000 to host port 8000
+    networks:
+      - app_network
+    depends_on:
+      - mongo
+    environment:
+      SPRING_DATA_MONGODB_URI: mongodb://mongo:27017/UTOOB  # Set the MongoDB URI
+      SPRING_DATA_MONGODB_DATABASE: UTOOB 
+
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"  # Map container port 27017 to host port 27017
+    networks:
+      - app_network
+    volumes:
+      - mongodb-data:/data/db  # Define a volume for the MongoDB data
+
+networks:
+  app_network:
+
+volumes:
+  mongodb-data:
